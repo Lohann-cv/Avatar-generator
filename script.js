@@ -1,28 +1,28 @@
 // le dicttionaire categories qui permet de prendre les images en fonction des intération avec les listeners
 const categories = {
   tops: {
-    images: ["images/haut1.png", "images/haut2.png"],
-    index: 0,
-    nextBtn: "0nextBtn",
-    prevBtn: "0prevBtn"
-  },
-  bottoms: {
-    images: ["images/bottom1.png"],
+    images: ["images/haut1.png", "images/haut2.png", "images/haut3.png"],
     index: 0,
     nextBtn: "1nextBtn",
     prevBtn: "1prevBtn"
   },
-  addons: {
-    images: ["images/addon1.png"],
+  bottoms: {
+    images: ["images/bottom1.png", "images/bottom2.png", "images/bottom3.png"],
     index: 0,
     nextBtn: "2nextBtn",
     prevBtn: "2prevBtn"
+  },
+  addOns: {
+    images: ["images/addon1.png", "images/addon2.png", "images/addon3.png"],
+    index: 0,
+    nextBtn: "0nextBtn",
+    prevBtn: "0prevBtn"
   }
 }
 // cette fonction (appeler dans les listeners) permet de mettre à jour la source de l'image dans la partie html par celle corespondant à l'index choisie
 function updateImage(cat) {
     const category = categories[cat];
-    const imgElement = document.getElementById(cat + "-img");
+    const imgElement = document.getElementById(cat);
     imgElement.src = category.images[category.index];
 }
 
@@ -40,13 +40,17 @@ function randomize() {
     }
 }
 
-// ces deux bloque gère le changement d'image quand on appuis sur les flèche 
-document.getElementById(category.nextBtn).addEventListener("click", () => {
-  category.index = (category.index + 1) % category.images.length;  // ici lorsque le modulo de l'index de l'image (par rapport à la list) est egale à la length de la list, on retourne à la première image 
-  updateImage(cat);
-});
+for (const cat in categories) {
+    const category = categories[cat];
 
-document.getElementById(category.prevBtn).addEventListener("click", () => {
-  category.index = (category.index - 1 + category.images.length) % category.images.length;  // Loop to last image
-  updateImage(cat);
-});
+    // ces deux bloque gère le changement d'image quand on appuis sur les flèche 
+    document.getElementById(category.nextBtn).addEventListener("click", () => {
+    category.index = (category.index + 1) % category.images.length;  // ici lorsque le modulo de l'index de l'image (par rapport à la list) est egale à la length de la list, on retourne à la première image 
+    updateImage(cat);
+    });
+
+    document.getElementById(category.prevBtn).addEventListener("click", () => {
+    category.index = (category.index - 1 + category.images.length) % category.images.length;  // Loop to last image
+    updateImage(cat);
+    });
+}
