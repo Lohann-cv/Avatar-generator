@@ -1,41 +1,116 @@
-html {
-    background-color: #ff5f1f;
-    display: flex;
-    justify-content: center;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
+/* On met border-box sur tout le html */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* permet d'avoir un beau dégrader et que le corp prenne au moins toute la page (avec min-height) */
+body {
+  background: linear-gradient(120deg, #e3f0ff 0%, #f5c1c3 100%);
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  min-height: 100vh;
 }
 
+/* Tout ce qui concerne le titre  */
+header {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #173d7a;
+  text-shadow: 0 2px 12px rgba(200,230,255,0.33);
+}
+
+/* Container principal */
 .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 24px 12px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 38px rgba(60,60,150,0.13);
 }
 
-.addons-image, .tops-image, .bottoms-image {
-    width: 90%;
-    max-width: 250px;
-    aspect-ratio: 3 / 4;
-    object-fit: contain;
-}
-
-button {
-    font-size: 1rem;
-    color: white;
-    background-color: #ff69b4;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #d90166;
-}
-
+/* Bouton randomize qui à aussi un beau dégrader et un effet de hover ou la couleur change et le bouton grandit */
 .random-button {
-    background-color: green;
+  background: linear-gradient(90deg, #60c3ff, #86cb97);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 12px 34px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(60,150,200,0.15);
+  margin-bottom: 12px;
+  transition: background 0.18s, transform 0.18s;
+}
+.random-button:hover {
+  background: linear-gradient(90deg, #39a1fd, #60b779);
+  transform: scale(1.05);
+}
+
+/* la partie des image permet globalement le centrage */
+.addons-container, .tops, .bottoms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 0;
+  width: 100%;
+}
+/* Sur le même principe du titre mais en plus petit */
+p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #173d7a;
+  text-shadow: 0 2px 12px rgba(200,230,255,0.33);
+}
+
+/* encore les image */
+.addons-image, .tops-image, .bottoms-image {
+  width: 180px;
+  max-width: 100%;
+  border-radius: 13px;
+  background: #f7fafd;
+  box-shadow: 0 2px 8px #bed6fb88;
+  margin-bottom: 4px;
+  object-fit: contain;
+  border: 2px solid #e3f0ff;
+}
+/* Partie sur les boutons flécher */
+.carousel-buttons {
+  display: flex;
+  gap: 13px;
+}
+
+.carousel-buttons button {
+  background: #fff;
+  color: #60c3ff;
+  border: 2px solid #add5f8;
+  border-radius: 100px;
+  width: 38px;
+  height: 38px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #bcdafc55;
+  cursor: pointer;
+  transition: border 0.18s, background 0.18s, color 0.18s, transform 0.18s;
+}
+.carousel-buttons button:hover {
+  background: #f5c1c3;
+  color: #fff;
+  border: 2px solid #f58f9d;
+  transform: scale(1.1);
 }
